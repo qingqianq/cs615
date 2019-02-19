@@ -1,0 +1,66 @@
+#!/bin/sh
+args=`getopt hv: $*`
+if [ $? != 0 ]
+then
+    exit 2
+fi
+set -- $args
+for i
+do
+    case "$i"
+    in
+        -h)
+            echo "Usage: $0 [-h] -v volume_id";
+            exit 0;;
+        -v)
+            volume_id="$2"; shift;
+            shift;;
+        --)
+            shift; break;;
+    esac
+done
+if [ -z $volume_id ];then
+    echo "Usage: $0 [-h] -v volume_id"
+    exit 1
+else
+    aws ec2 describe-volumes --volume-id $volume_id --output text 1>/dev/null 2>/dev/null
+    if [ $? != 0 ];then
+        echo "volume_id is invalid"
+        exit 1;
+        # elif[ "$region" != "us-east-1a" ]
+        #     echo "volume should be in us-east-1a region"
+    else
+        instance_id=`aws ec2 run-instances --key-name netbsd --image-id ami-569ed93c \
+            --instance-type t1.micro --query 'Instances[0].[InstanceId]' --output text `
+        public_dns=`aws ec2 describe-instances --output text \
+            --query "Reservations[*].Instances[*].[PublicDnsName]" --instance-ids $instance_id`
+        if [ -z $public_dns ];then
+            exit 1
+        else
+            echo "Waiting for aws creating instance"
+            sleep 30
+        fi
+        aws ec2 attach-volume --device /dev/sdf --instance-id $instance_id --volume-id $volume_id 1>/dev/null
+        if [ $? != 0 ];then
+            echo "waiting for configuration"
+            sleep 30
+            aws ec2 attach-volume --device /dev/sdf --instance-id $instance_id --volume-id $volume_id 1>/dev/null
+        fi
+        if [ $? != 0 ];then
+            exit 1
+        fi
+        ssh $public_dns <<EOF
+        disklabel /dev/rxbd2d
+EOF
+
+        if [ $? != 0 ];then
+            aws ec2 terminate-instances --instance-ids $instance_id 1>/dev/null
+            exit 1
+        fi
+        aws ec2 terminate-instances --instance-ids $instance_id 1>/dev/null
+        if [ $? != 0 ];then
+            exit 1
+        fi
+        exit 0
+    fi
+fi
