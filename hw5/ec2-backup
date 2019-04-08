@@ -1,0 +1,146 @@
+#!/bin/sh
+usage(){
+    echo "Usage: $0 [-h] [-v volume_id] dir" 1>&2
+}
+
+terminate_instance(){
+    if [ -n "$EC2_BACKUP_VERBOSE" ];then
+        echo "Terminate instance..." 1>&2;
+    fi
+    aws ec2 terminate-instances --instance-ids $1 1>/dev/null 2>/dev/null;
+    if [ $? != 0 ];then
+        echo "terminate instance error" 1 > /dev/null;
+        exit 1;
+    fi
+}
+
+is_valid_dir(){
+    dir_name=$1;
+    dir_size=`du -gs $1 2>/dev/null| awk '{print $1}'`;
+    if [ -z "$dir_size" ];then
+        echo "$1: No such file or directory" 1>&2;
+        exit 1;
+    fi
+    if [ "$dir_size" -eq 0 ];then
+        echo "$1:Empty file or directory" 1>&2;
+        exit 0;
+    fi
+}
+
+get_volume(){
+    if [ -z "$1" ];then
+        if [ -n "$EC2_BACKUP_VERBOSE" ];then
+            echo "Creating volume..." 1>&2;
+        fi
+        available_zone=`aws ec2 describe-availability-zones \
+                            --query AvailabilityZones[0].ZoneName --output text 2>/dev/null`;
+        # double_size=$[$dir_size * 2];
+        double_size=`echo $dir_size + $dir_size | bc`;
+        volume_id=`aws ec2 create-volume --availability-zone $available_zone \
+                       --size $double_size --output text --query VolumeId 2>/dev/null`;
+        if [ -z "$volume_id" ];then
+            echo "Create volume error" 1>&2;
+            exit 1;
+        fi
+    else
+        if [ -n "$EC2_BACKUP_VERBOSE" ];then
+            echo "Checking volume..." 1>&2;
+        fi
+        # vol_zone=`aws ec2 describe-volumes --volume-id $volume_id --output text \
+            # --query "Volumes[0].AvailabilityZcone" 2>/dev/null`;
+        # if [[ "$vol_zone" != us-east-1* ]];then
+        # if [ "$vol_zone" != us-east-1* ];then
+        #     echo "Volume zone $vol_zone does not match default ami-zone us-east-1" 1>&2;
+        #     exit 1;
+        # fi
+        vol_size=`aws ec2 describe-volumes --volume-id $volume_id --output text \
+                      --query "Volumes[0].Size" 2>/dev/null`;
+        if [ -z $vol_size ];then
+            echo "Volume id $volume_id is invalid" 1>&2;
+            exit 1;
+        fi
+        if [ "$vol_size" -lt "$dir_size" ];then
+            echo "Need volume size more than $dir_size GB" 1>&2;
+            exit 1;
+        fi
+    fi
+}
+
+create_instance(){
+    if [ -n "$EC2_BACKUP_VERBOSE" ];then
+        echo "Creating instance..." 1>&2;
+    fi
+    # instance_id=`aws ec2 run-instances --key-name netbsd --image-id ami-569ed93c \
+        #$EC2_BACKUP_FLAGS_AWS --output text --query 'Instances[0].[InstanceId]' 2>/dev/null`;
+    instance_id=`aws ec2 run-instances --key-name ec2-backup --image-id ami-569ed93c \
+                     $EC2_BACKUP_FLAGS_AWS --output text --query 'Instances[0].[InstanceId]' 2>/dev/null`;
+    if [ -z "$instance_id" ];then
+        echo "Create instance error" 1>&2;
+        exit 1;
+    fi
+    aws ec2 wait instance-status-ok --instance-id $instance_id 1>/dev/null 2>/dev/null;
+    if [ -n "$EC2_BACKUP_VERBOSE" ];then
+        echo "Creating instance finished with instance_id $instance_id" 1>&2;
+    fi
+}
+
+attach_volume(){
+    if [ -n "$EC2_BACKUP_VERBOSE" ];then
+        echo "Attaching instance..." 1>&2;
+    fi
+    aws ec2 attach-volume --device /dev/sda3 --instance-id $1 --volume-id $2 1>/dev/null 2>/dev/null;
+    if [ $? != 0 ];then
+        echo "Attach volume to instance error" 1>&2;
+        terminate_instance $1;
+        exit 1;
+    fi
+    if [ -n "$EC2_BACKUP_VERBOSE" ];then
+        echo "Attaching instance finished" 1>&2;
+    fi
+}
+
+back_up(){
+    if [ -n "$EC2_BACKUP_VERBOSE" ];then
+        echo "Backing up..." 1>&2;
+    fi
+    public_dns=`aws ec2 describe-instances --output text \
+                --query "Reservations[*].Instances[*].[PublicDnsName]" --instance-ids $instance_id 2>/dev/null`;
+    tar -cf - $dir_name | ssh $EC2_BACKUP_FLAGS_SSH $public_dns "dd of=/dev/sda3" 2>/dev/null;
+    if [ $? != 0 ];then
+        echo "Back up error" 1>&2;
+        terminate_instance $instance_id;
+        exit 1;
+    fi
+}
+
+args=`getopt hv: $*`
+if [ $? != 0 ]
+then
+    exit 2
+fi
+set -- $args
+for i
+do
+    case "$i"
+    in
+        -h)
+            usage;
+            exit 0;;
+        -v)
+            volume_id="$2"; shift;
+            shift;;
+        --)
+            shift; break;;
+    esac
+done
+if [ -z "$*" ]; then
+    usage;
+    exit 1;
+fi
+is_valid_dir $*;
+get_volume $volume_id;
+create_instance;
+attach_volume $instance_id $volume_id;
+back_up;
+terminate_instance $instance_id;
+echo $volume_id;
