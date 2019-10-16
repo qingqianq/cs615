@@ -1,0 +1,96 @@
+IP 172.31.87.171.36708 > 172.31.87.155.domain: 15364+ A? www.yahoo.com. (31)
+IP 172.31.87.171.36708 > 172.31.87.155.domain: 53005+ AAAA? www.yahoo.com. (31)
+IP 172.31.87.155.domain > 172.31.87.171.36708: 15364 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., A 98.138.219.232, A 72.30.35.10, A 98.138.219.231, A 72.30.35.9 (279)
+IP 172.31.87.155.domain > 172.31.87.171.36708: 53005 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., AAAA 2001:4998:44:41d::3, AAAA 2001:4998:58:1836::10, AAAA 2001:4998:58:1836::11, AAAA 2001:4998:44:41d::4 (327)
+   DNS : get the address from the server.
+
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [S], seq 648054322, win 26883, options [mss 8961,sackOK,TS val 3723707207 ecr 0,nop,wscale 7], length 0
+   TCP : first handshake, set SYN = 1,
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352:Flags [S.], seq 106988652, ack 648054323, win 14480, options [mss 1460,sackOK,TS val 3651059043 ecr 3723707207,nop,wscale 8], length 0
+   TCP : SYN flag, and the ack = seq + 1, second handshake.
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 1, win 211, options [nop,nop,TS val 3723707238 ecr 3651059043], length 0
+   TCP : ack = 1, finish 3 handshake.
+
+IP 172.31.87.171.56471 > 172.31.87.155.domain: 61788+ A? www.yahoo.com. (31)
+IP 172.31.87.171.56471 > 172.31.87.155.domain: 24933+ AAAA? www.yahoo.com. (31)
+IP 172.31.87.155.domain > 172.31.87.171.56471: 61788 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., A 98.138.219.232, A 72.30.35.9, A 98.138.219.231, A 72.30.35.10 (279)
+IP 172.31.87.155.domain > 172.31.87.171.56471: 24933 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., AAAA 2001:4998:58:1836::10, AAAA 2001:4998:44:41d::3, AAAA 2001:4998:44:41d::4, AAAA 2001:4998:58:1836::11 (327)
+
+   HTTPS protocol handshake:
+         1. Client Hello, the client send Client Hello message, and contain Random1 number
+         2. The server receive the message send a ack message, then , the server send a Server Hello message, contain a Random2 number.
+         3. Certificate(server send the certificate to client with the public key) and Server Key exchange send the DH parameters, Server Hello done.
+         4. The client get the public key use it to make a Random3, then use Random3 to make PreMaster Key.
+         5. Client Key Exchange : client send the PreMaser key to server, so far, both client and server have the Rd1 Rd2 Rd3, use them to encrypt.
+                   Change Cipher Spec(client) use 3 numbers key to encrypt, then Encrypted Handshake Message.
+         6. Change Cipher Spec(server), Encrypted Handshake Message, New Session Ticket(A technology, use the server key to encrypt session message, and save it
+                   on the browser to make handshake fast.)
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [P.], seq 1:290, ack 1, win 211, options [nop,nop,TS val 3723707239 ecr 3651059043], length 289
+   Client Hello.
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], ack 290, win 61, options [nop,nop,TS val 3651059075 ecr 3723707239], length 0
+   Server ack.
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 1:4097, ack 290, win 61, options [nop,nop,TS val 3651059075 ecr 3723707239], length 4096
+   Server Hello.
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 4097, win 275, options [nop,nop,TS val 3723707270 ecr 3651059075], length 0
+   Client ack.
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 4097:5156, ack 290, win 61, options [nop,nop,TS val 3651059078 ecr 3723707239], length 1059
+   Certificate, Serve Key Exchange,send DH parameters, process 3.
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 5156, win 297, options [nop,nop,TS val 3723707273 ecr 3651059078], length 0
+   Client ack.
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [P.], seq 290:416, ack 5156, win 297, options [nop,nop,TS val 3723707278 ecr 3651059078], length 126
+   Client key exchange, process 5.
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 5156:5414, ack 416, win 61, options [nop,nop,TS val 3651059114 ecr 3723707278], length 258
+   Process 6.
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [P.], seq 416:484, ack 5414, win 320, options [nop,nop,TS val 3723707310 ecr 3651059114], length 68
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 5414:6743, ack 484, win 61, options [nop,nop,TS val 3651059154 ecr 3723707310], length 1329
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 6743:7108, ack 484, win 61, options [nop,nop,TS val 3651059154 ecr 3723707310], length 365
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 7108, win 365, options [nop,nop,TS val 3723707350 ecr 3651059154], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 7108:7562, ack 484, win 61, options [nop,nop,TS val 3651059154 ecr 3723707310], length 454
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 7562:8891, ack 484, win 61, options [nop,nop,TS val 3651059154 ecr 3723707310], length 1329
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 8891, win 410, options [nop,nop,TS val 3723707350 ecr 3651059154], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 8891:10220, ack 484, win 61, options [nop,nop,TS val 3651059154 ecr 3723707310], length 1329
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 10220:11549, ack 484, win 61, options [nop,nop,TS val 3651059155 ecr 3723707310], length 1329
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 11549, win 452, options [nop,nop,TS val 3723707350 ecr 3651059154], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 11549:12878, ack 484, win 61, options [nop,nop,TS val 3651059155 ecr 3723707310], length 1329
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 12878:14207, ack 484, win 61, options [nop,nop,TS val 3651059155 ecr 3723707310], length 1329
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 14207, win 493, options [nop,nop,TS val 3723707350 ecr 3651059155], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 14207:15536, ack 484, win 61, options [nop,nop,TS val 3651059155 ecr 3723707310], length 1329
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 15536:16865, ack 484, win 61, options [nop,nop,TS val 3651059155 ecr 3723707310], length 1329
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 16865, win 535, options [nop,nop,TS val 3723707350 ecr 3651059155], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 16865:19761, ack 484, win 61, options [nop,nop,TS val 3651059185 ecr 3723707350], length 2896
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 19761, win 580, options [nop,nop,TS val 3723707380 ecr 3651059185], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 19761:37137, ack 484, win 61, options [nop,nop,TS val 3651059185 ecr 3723707350], length 17376
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 37137, win 689, options [nop,nop,TS val 3723707380 ecr 3651059185], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 37137:60305, ack 484, win 61, options [nop,nop,TS val 3651059216 ecr 3723707380], length 23168
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 60305, win 843, options [nop,nop,TS val 3723707411 ecr 3651059216], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 60305:68993, ack 484, win 61, options [nop,nop,TS val 3651059247 ecr 3723707411], length 8688
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 68993, win 979, options [nop,nop,TS val 3723707442 ecr 3651059247], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 68993:86369, ack 484, win 61, options [nop,nop,TS val 3651059247 ecr 3723707411], length 17376
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 86369, win 1250, options [nop,nop,TS val 3723707443 ecr 3651059247], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 86369:95057, ack 484, win 61, options [nop,nop,TS val 3651059278 ecr 3723707442], length 8688
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 95057, win 1386, options [nop,nop,TS val 3723707473 ecr 3651059278], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 95057:115329, ack 484, win 61, options [nop,nop,TS val 3651059278 ecr 3723707443], length 20272
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 115329, win 1386, options [nop,nop,TS val 3723707474 ecr 3651059278], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 115329:124017, ack 484, win 61, options [nop,nop,TS val 3651059309 ecr 3723707473], length 8688
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 124017, win 1522, options [nop,nop,TS val 3723707504 ecr 3651059309], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 124017:147185, ack 484, win 61, options [nop,nop,TS val 3651059309 ecr 3723707474], length 23168
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 147185, win 1884, options [nop,nop,TS val 3723707505 ecr 3651059309], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 147185:155873, ack 484, win 61, options [nop,nop,TS val 3651059340 ecr 3723707504], length 8688
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 155873, win 2020, options [nop,nop,TS val 3723707536 ecr 3651059340], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 155873:181937, ack 484, win 61, options [nop,nop,TS val 3651059340 ecr 3723707505], length 26064
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 181937, win 2354, options [nop,nop,TS val 3723707536 ecr 3651059340], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [.], seq 181937:219585, ack 484, win 61, options [nop,nop,TS val 3651059371 ecr 3723707536], length 37648
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 219585, win 2597, options [nop,nop,TS val 3723707567 ecr 3651059371], length 0
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [P.], seq 219585:243024, ack 484, win 61, options [nop,nop,TS val 3651059402 ecr 3723707567], length 23439
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 243024, win 2765, options [nop,nop,TS val 3723707598 ecr 3651059402], length 0
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [P.], seq 484:515, ack 243024, win 3015, options [nop,nop,TS val 3723707598 ecr 3651059402], length 31
+
+
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [F.], seq 515, ack 243024, win 3015, options [nop,nop,TS val 3723707598 ecr 3651059402], length 0
+   TCP : send a FIN flag, try to finish the connection.
+IP media-router-fp2.prod1.media.vip.ne1.yahoo.com.https > 172.31.87.171.56352: Flags [F.], seq 243024, ack 516, win 61, options [nop,nop,TS val 3651059434 ecr 3723707598], length 0
+   TCP : ack = seq + 1, and Fin = 1 in one package
+IP 172.31.87.171.56352 > media-router-fp2.prod1.media.vip.ne1.yahoo.com.https: Flags [.], ack 243025, win 3015, options [nop,nop,TS val 3723707629 ecr 3651059434], length 0
+   TCP : ack = seq + 1, close the connection
+ARP, Request who-has 172.31.87.155 tell 172.31.87.171, length 28
+ARP, Reply 172.31.87.155 is-at 12:8c:2b:f8:d2:f0 (oui Unknown), length 42

@@ -1,0 +1,293 @@
+snoop after 27 times time exceeded get unreachable
+tcpdump 25 times exceeded before unreachable.
+
+Traceroute  tracks  the route packets taken from an IP network on their way to a given host.
+It utilizes the IP protocol's time to  live  (TTL) field  and  attempts to elicit an ICMP
+TIME_EXCEEDED response from each gateway along the path to the host.
+
+Traceroute-command sends a TTL=1 udp request to the www.stevens.edu, then get the time exceeded reply, so the first route
+address is 100.65.14.209, the it send a TTL=2 to get the second route address ... until get the www.stevens.edu, the it will
+return a unreachable ICMP package.
+
+1  02:26:20.920735 IP ip-172-31-17-149.ec2.internal.51059 > ip-172-31-0-2.ec2.internal.domain: UDP, length 33
+2  02:26:20.920756 IP ip-172-31-17-149.ec2.internal.51059 > ip-172-31-0-2.ec2.internal.domain: UDP, length 33
+3  02:26:20.938090 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51059: UDP, length 113
+4  02:26:20.972712 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51059: UDP, length 139
+5  02:26:20.973479 IP ip-172-31-17-149.ec2.internal.39512 > 104.16.126.51.traceroute: UDP, length 32
+6  02:26:20.973569 IP ip-172-31-17-149.ec2.internal.33269 > 104.16.126.51.33435: UDP, length 32
+7  02:26:20.973648 IP ip-172-31-17-149.ec2.internal.42178 > 104.16.126.51.33436: UDP, length 32
+8  02:26:20.973725 IP ip-172-31-17-149.ec2.internal.59403 > 104.16.126.51.33437: UDP, length 32
+9  02:26:20.973860 IP ip-172-31-17-149.ec2.internal.38922 > 104.16.126.51.33438: UDP, length 32
+10  02:26:20.973946 IP ip-172-31-17-149.ec2.internal.51029 > 104.16.126.51.33439: UDP, length 32
+11  02:26:20.974025 IP ip-172-31-17-149.ec2.internal.54994 > 104.16.126.51.33440: UDP, length 32
+12  02:26:20.974105 IP ip-172-31-17-149.ec2.internal.36419 > 104.16.126.51.33441: UDP, length 32
+13  02:26:20.974186 IP ip-172-31-17-149.ec2.internal.58390 > 104.16.126.51.33442: UDP, length 32
+14  02:26:20.974299 IP ip-172-31-17-149.ec2.internal.46339 > 104.16.126.51.33443: UDP, length 32
+15  02:26:20.974378 IP ip-172-31-17-149.ec2.internal.47957 > 104.16.126.51.33444: UDP, length 32
+16  02:26:20.974441 IP ip-172-31-17-149.ec2.internal.40415 > 104.16.126.51.33445: UDP, length 32
+17  02:26:20.974515 IP ip-172-31-17-149.ec2.internal.48345 > 104.16.126.51.33446: UDP, length 32
+18  02:26:20.974589 IP ip-172-31-17-149.ec2.internal.57978 > 104.16.126.51.33447: UDP, length 32
+19  02:26:20.974655 IP ip-172-31-17-149.ec2.internal.56872 > 104.16.126.51.33448: UDP, length 32
+20  02:26:20.974719 IP ip-172-31-17-149.ec2.internal.52133 > 104.16.126.51.33449: UDP, length 32
+21  02:26:20.975135 IP 100.65.14.209 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+22  02:26:20.975287 IP ip-172-31-17-149.ec2.internal.35108 > 104.16.126.51.33450: UDP, length 32
+23  02:26:20.976024 IP 100.65.14.17 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+24  02:26:20.976118 IP ip-172-31-17-149.ec2.internal.52478 > 104.16.126.51.33451: UDP, length 32
+25  02:26:20.976666 IP 100.65.15.81 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+26  02:26:20.976756 IP ip-172-31-17-149.ec2.internal.44368 > 104.16.126.51.33452: UDP, length 32
+27  02:26:20.981105 IP 52.93.28.103 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+28  02:26:20.981206 IP ip-172-31-17-149.ec2.internal.52438 > 104.16.126.51.33453: UDP, length 32
+29  02:26:20.981438 IP 216.182.226.20 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+30  02:26:20.981523 IP ip-172-31-17-149.ec2.internal.46541 > 104.16.126.51.33454: UDP, length 32
+31  02:26:20.981997 IP 52.93.28.105 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+32  02:26:20.982079 IP ip-172-31-17-149.ec2.internal.48321 > 104.16.126.51.33455: UDP, length 32
+33  02:26:20.986224 IP 100.66.9.2 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+34  02:26:20.986344 IP ip-172-31-17-149.ec2.internal.42892 > 104.16.126.51.33456: UDP, length 32
+35  02:26:20.986986 IP 52.93.28.75 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+36  02:26:20.987094 IP ip-172-31-17-149.ec2.internal.50894 > 104.16.126.51.33457: UDP, length 32
+37  02:26:20.987985 IP 100.66.5.75 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+38  02:26:20.988095 IP ip-172-31-17-149.ec2.internal.45814 > 104.16.126.51.33458: UDP, length 32
+39  02:26:20.988523 IP 100.66.7.205 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+40  02:26:20.988641 IP ip-172-31-17-149.ec2.internal.46132 > 104.16.126.51.33459: UDP, length 32
+41  02:26:20.988985 IP 100.66.5.121 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+42  02:26:20.989088 IP ip-172-31-17-149.ec2.internal.42581 > 104.16.126.51.33460: UDP, length 32
+43  02:26:20.990267 IP 216.182.231.16 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+44  02:26:20.990381 IP ip-172-31-17-149.ec2.internal.41967 > 104.16.126.51.33461: UDP, length 32
+45  02:26:20.998651 IP 100.66.9.94 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+46  02:26:20.998666 IP 100.66.7.255 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+47  02:26:20.998672 IP 100.66.14.176 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+48  02:26:20.998676 IP 216.182.231.22 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+49  02:26:20.998680 IP 100.66.6.247 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+50  02:26:20.998684 IP 100.66.5.111 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+51  02:26:20.998688 IP 100.66.13.146 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+52  02:26:20.998692 IP 100.66.15.146 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+53  02:26:20.998697 IP 100.66.11.170 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+54  02:26:20.999639 IP ip-172-31-17-149.ec2.internal.33318 > ip-172-31-0-2.ec2.internal.domain: UDP, length 41
+55  02:26:21.000040 IP ip-172-31-17-149.ec2.internal.33061 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+56  02:26:21.001516 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.33318: UDP, length 81
+57  02:26:21.001676 IP ip-172-31-17-149.ec2.internal.37680 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+58  02:26:21.003564 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.33061: UDP, length 116
+59  02:26:21.003580 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.37680: UDP, length 87
+60  02:26:21.003770 IP ip-172-31-17-149.ec2.internal.43877 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+61  02:26:21.006732 IP ip-172-31-17-149.ec2.internal.54527 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+62  02:26:21.009232 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.54527: UDP, length 116
+63  02:26:21.009654 IP ip-172-31-17-149.ec2.internal.34981 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+64  02:26:21.013632 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.34981: UDP, length 116
+65  02:26:21.014130 IP ip-172-31-17-149.ec2.internal.50542 > ip-172-31-0-2.ec2.internal.domain: UDP, length 42
+66  02:26:21.015846 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.50542: UDP, length 101
+67  02:26:21.016011 IP 52.93.114.50 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 148
+68  02:26:21.016309 IP ip-172-31-17-149.ec2.internal.42348 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+69  02:26:21.018232 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.42348: UDP, length 103
+70  02:26:21.018730 IP ip-172-31-17-149.ec2.internal.44940 > ip-172-31-0-2.ec2.internal.domain: UDP, length 41
+71  02:26:21.023550 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.44940: UDP, length 100
+72  02:26:21.024146 IP ip-172-31-17-149.ec2.internal.60316 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+73  02:26:21.025819 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.60316: UDP, length 103
+74  02:26:21.026258 IP ip-172-31-17-149.ec2.internal.55463 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+75  02:26:21.028169 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.55463: UDP, length 103
+76  02:26:21.028559 IP ip-172-31-17-149.ec2.internal.44582 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+77  02:26:21.030283 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.44582: UDP, length 103
+78  02:26:21.030660 IP ip-172-31-17-149.ec2.internal.57967 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+79  02:26:21.032228 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.57967: UDP, length 102
+80  02:26:21.032564 IP ip-172-31-17-149.ec2.internal.60708 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+81  02:26:21.036115 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.60708: UDP, length 102
+82  02:26:21.036745 IP ip-172-31-17-149.ec2.internal.37590 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+83  02:26:21.038450 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.37590: UDP, length 102
+84  02:26:21.039046 IP ip-172-31-17-149.ec2.internal.33099 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+85  02:26:21.043403 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.33099: UDP, length 102
+86  02:26:21.043864 IP ip-172-31-17-149.ec2.internal.48719 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+87  02:26:21.045794 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.48719: UDP, length 102
+88  02:26:21.046279 IP ip-172-31-17-149.ec2.internal.51892 > ip-172-31-0-2.ec2.internal.domain: UDP, length 42
+89  02:26:21.048157 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51892: UDP, length 101
+90  02:26:21.048740 IP ip-172-31-17-149.ec2.internal.55219 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+91  02:26:21.050510 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.55219: UDP, length 103
+92  02:26:21.050843 IP ip-172-31-17-149.ec2.internal.44607 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+93  02:26:21.052605 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.44607: UDP, length 102
+94  02:26:21.052955 IP ip-172-31-17-149.ec2.internal.49731 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+95  02:26:21.054621 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.49731: UDP, length 102
+96  02:26:21.054998 IP ip-172-31-17-149.ec2.internal.60807 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+97  02:26:21.057866 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.60807: UDP, length 114
+98  02:26:21.058239 IP ip-172-31-17-149.ec2.internal.34830 > ip-172-31-0-2.ec2.internal.domain: UDP, length 42
+99  02:26:21.061787 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.34830: UDP, length 113
+100  02:26:21.062307 IP ip-172-31-17-149.ec2.internal.50852 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+101  02:26:21.066989 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.50852: UDP, length 114
+102  02:26:21.067534 IP ip-172-31-17-149.ec2.internal.43945 > 104.16.126.51.33462: UDP, length 32
+103  02:26:21.067611 IP ip-172-31-17-149.ec2.internal.57972 > 104.16.126.51.33463: UDP, length 32
+104  02:26:21.067681 IP ip-172-31-17-149.ec2.internal.36443 > 104.16.126.51.33464: UDP, length 32
+105  02:26:21.067755 IP ip-172-31-17-149.ec2.internal.45186 > 104.16.126.51.33465: UDP, length 32
+106  02:26:21.067832 IP ip-172-31-17-149.ec2.internal.39425 > 104.16.126.51.33466: UDP, length 32
+107  02:26:21.067902 IP ip-172-31-17-149.ec2.internal.36872 > 104.16.126.51.33467: UDP, length 32
+108  02:26:21.067970 IP ip-172-31-17-149.ec2.internal.43456 > 104.16.126.51.33468: UDP, length 32
+109  02:26:21.068026 IP ip-172-31-17-149.ec2.internal.37538 > 104.16.126.51.33469: UDP, length 32
+110  02:26:21.068096 IP ip-172-31-17-149.ec2.internal.35341 > 104.16.126.51.33470: UDP, length 32
+111  02:26:21.068257 IP ip-172-31-17-149.ec2.internal.50694 > 104.16.126.51.33471: UDP, length 32
+112  02:26:21.068736 IP 54.239.111.235 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+113  02:26:21.068762 IP 54.239.111.231 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+114  02:26:21.068865 IP ip-172-31-17-149.ec2.internal.43983 > 104.16.126.51.33472: UDP, length 32
+115  02:26:21.068945 IP ip-172-31-17-149.ec2.internal.48586 > 104.16.126.51.33473: UDP, length 32
+116  02:26:21.069122 IP 54.239.111.247 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+117  02:26:21.069136 IP 104.16.126.51 > ip-172-31-17-149.ec2.internal: ICMP 104.16.126.51 udp port 33471 unreachable, length 68
+
+
+118  02:26:21.069628 IP 206.126.237.30 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+119  02:26:21.069900 IP 52.93.114.76 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 148
+120  02:26:21.071069 IP 54.239.111.235 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+121  02:26:21.071265 IP 206.126.237.30 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 36
+122  02:26:21.088335 IP 52.93.114.78 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 148
+123  02:26:21.091237 IP 52.93.114.12 > ip-172-31-17-149.ec2.internal: ICMP time exceeded in-transit, length 148
+124  02:26:21.247856 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.43877: UDP, length 44
+125  02:26:21.248077 IP ip-172-31-17-149.ec2.internal.48717 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+126  02:26:21.256899 IP ip-172-31-17-149.ec2.internal.55081 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+127  02:26:21.259649 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.55081: UDP, length 114
+128  02:26:21.260091 IP ip-172-31-17-149.ec2.internal.45948 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+129  02:26:21.263042 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.45948: UDP, length 114
+130  02:26:21.263564 IP ip-172-31-17-149.ec2.internal.38067 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+131  02:26:21.268160 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.38067: UDP, length 116
+132  02:26:21.268569 IP ip-172-31-17-149.ec2.internal.42079 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+133  02:26:21.270238 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.42079: UDP, length 116
+134  02:26:21.270623 IP ip-172-31-17-149.ec2.internal.38430 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+135  02:26:21.274806 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.38430: UDP, length 114
+136  02:26:21.275367 IP ip-172-31-17-149.ec2.internal.50251 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+137  02:26:21.279873 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.50251: UDP, length 112
+138  02:26:21.280283 IP ip-172-31-17-149.ec2.internal.50278 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+139  02:26:21.283240 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.50278: UDP, length 114
+140  02:26:21.283735 IP ip-172-31-17-149.ec2.internal.59228 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+141  02:26:21.286834 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.59228: UDP, length 116
+142  02:26:21.289572 IP ip-172-31-17-149.ec2.internal.42266 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+143  02:26:21.356332 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.48717: UDP, length 44
+144  02:26:21.356357 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.42266: UDP, length 44
+145  02:26:21.357303 IP ip-172-31-17-149.ec2.internal.48595 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+146  02:26:21.357411 IP ip-172-31-17-149.ec2.internal.36589 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+147  02:26:21.357748 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.48595: UDP, length 103
+148  02:26:21.358042 IP ip-172-31-17-149.ec2.internal.51749 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+149  02:26:21.362270 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51749: UDP, length 102
+150  02:26:21.362670 IP ip-172-31-17-149.ec2.internal.60118 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+151  02:26:21.366847 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.60118: UDP, length 102
+152  02:26:21.367377 IP ip-172-31-17-149.ec2.internal.60051 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+153  02:26:21.371514 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.60051: UDP, length 114
+154  02:26:21.371936 IP ip-172-31-17-149.ec2.internal.53377 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+155  02:26:21.376116 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.53377: UDP, length 116
+156  02:26:21.376577 IP ip-172-31-17-149.ec2.internal.59721 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+157  02:26:21.376869 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.59721: UDP, length 114
+158  02:26:21.377343 IP ip-172-31-17-149.ec2.internal.45943 > ip-172-31-0-2.ec2.internal.domain: UDP, length 41
+159  02:26:21.377635 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.45943: UDP, length 100
+160  02:26:21.377928 IP ip-172-31-17-149.ec2.internal.35223 > ip-172-31-0-2.ec2.internal.domain: UDP, length 42
+161  02:26:21.381529 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.35223: UDP, length 113
+162  02:26:21.381947 IP ip-172-31-17-149.ec2.internal.42152 > ip-172-31-0-2.ec2.internal.domain: UDP, length 42
+163  02:26:21.382473 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.42152: UDP, length 101
+164  02:26:21.382885 IP ip-172-31-17-149.ec2.internal.36528 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+165  02:26:21.383177 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.36528: UDP, length 102
+166  02:26:21.383678 IP ip-172-31-17-149.ec2.internal.51067 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+167  02:26:21.383992 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51067: UDP, length 102
+168  02:26:21.384429 IP ip-172-31-17-149.ec2.internal.51068 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+169  02:26:21.384726 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51068: UDP, length 116
+170  02:26:21.581771 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.36589: UDP, length 44
+171  02:26:21.582426 IP ip-172-31-17-149.ec2.internal.49644 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+172  02:26:21.582804 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.49644: UDP, length 116
+173  02:26:22.021583 IP ip-172-31-17-149.ec2.internal.43761 > ip-172-31-0-2.ec2.internal.domain: UDP, length 42
+174  02:26:22.022119 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.43761: UDP, length 101
+175  02:26:22.022567 IP ip-172-31-17-149.ec2.internal.52449 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+176  02:26:22.022938 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.52449: UDP, length 102
+177  02:26:22.023254 IP ip-172-31-17-149.ec2.internal.36922 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+178  02:26:22.023553 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.36922: UDP, length 103
+179  02:26:22.023826 IP ip-172-31-17-149.ec2.internal.48914 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+180  02:26:22.024126 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.48914: UDP, length 116
+181  02:26:22.024447 IP ip-172-31-17-149.ec2.internal.37603 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+182  02:26:22.027986 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.37603: UDP, length 102
+183  02:26:22.028319 IP ip-172-31-17-149.ec2.internal.43727 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+184  02:26:22.028679 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.43727: UDP, length 102
+185  02:26:22.029001 IP ip-172-31-17-149.ec2.internal.39572 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+186  02:26:22.029330 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.39572: UDP, length 103
+187  02:26:22.029607 IP ip-172-31-17-149.ec2.internal.51172 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+188  02:26:22.029883 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.51172: UDP, length 103
+189  02:26:22.030144 IP ip-172-31-17-149.ec2.internal.42269 > ip-172-31-0-2.ec2.internal.domain: UDP, length 44
+190  02:26:22.030443 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.42269: UDP, length 103
+191  02:26:22.030751 IP ip-172-31-17-149.ec2.internal.35360 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+192  02:26:22.031026 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.35360: UDP, length 114
+193  02:26:22.031538 IP ip-172-31-17-149.ec2.internal.60741 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+194  02:26:22.031821 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.60741: UDP, length 116
+195  02:26:22.032081 IP ip-172-31-17-149.ec2.internal.44142 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+196  02:26:22.032358 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.44142: UDP, length 116
+197  02:26:22.032666 IP ip-172-31-17-149.ec2.internal.56793 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+198  02:26:22.032948 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.56793: UDP, length 116
+199  02:26:22.033279 IP ip-172-31-17-149.ec2.internal.38099 > ip-172-31-0-2.ec2.internal.domain: UDP, length 45
+200  02:26:22.033561 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.38099: UDP, length 112
+201  02:26:22.033820 IP ip-172-31-17-149.ec2.internal.53076 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+202  02:26:22.034091 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.53076: UDP, length 114
+203  02:26:22.034410 IP ip-172-31-17-149.ec2.internal.57600 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+204  02:26:22.034770 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.57600: UDP, length 114
+205  02:26:22.035041 IP ip-172-31-17-149.ec2.internal.59872 > ip-172-31-0-2.ec2.internal.domain: UDP, length 43
+206  02:26:22.035310 IP ip-172-31-0-2.ec2.internal.domain > ip-172-31-17-149.ec2.internal.59872: UDP, length 114
+
+
+1   0.00000 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33434 S=33871 LEN=20
+2   0.01778 216.182.226.246 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+3   0.00353 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33435 S=33871 LEN=20
+4   0.01935 216.182.226.240 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+5   0.00349 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33436 S=33871 LEN=20
+6   0.01841 216.182.226.240 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+7   0.00005 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33437 S=33871 LEN=20
+8   0.01259  100.66.9.18 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+9   0.00221 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33438 S=33871 LEN=20
+10   0.01837 100.66.8.244 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+11   0.00220 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33439 S=33871 LEN=20
+12   0.01705 100.66.12.150 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+13   0.00209 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33440 S=33871 LEN=20
+14   0.02105 100.66.10.160 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+15   0.00218 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33441 S=33871 LEN=20
+16   0.02084 100.66.14.120 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+17   0.00204 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33442 S=33871 LEN=20
+18   0.02000 100.66.11.72 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+19   0.00299 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33443 S=33871 LEN=20
+20   0.01466  100.66.7.17 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+21   0.00215 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33444 S=33871 LEN=20
+22   0.01401 100.66.7.107 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+23   0.00208 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33445 S=33871 LEN=20
+24   0.01994 100.66.7.117 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+25   0.00211 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33446 S=33871 LEN=20
+26   0.02031  100.66.5.91 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+27   0.00274 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33447 S=33871 LEN=20
+28   0.01702 100.66.5.249 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+29   0.00230 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33448 S=33871 LEN=20
+30   0.01165  100.66.5.61 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+31   0.00235 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33449 S=33871 LEN=20
+32   0.00065 100.65.13.209 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+33   0.00214 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33450 S=33871 LEN=20
+34   0.00034 100.65.13.145 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+35   0.00223 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33451 S=33871 LEN=20
+36   0.00610 100.65.15.177 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+37   0.00251 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33452 S=33871 LEN=20
+38   0.00048 52.93.28.241 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+39   0.00213 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33453 S=33871 LEN=20
+40   0.00038 52.93.28.229 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+41   0.00297 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33454 S=33871 LEN=20
+42   0.00648   52.93.29.3 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+43   0.00304 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33455 S=33871 LEN=20
+44   5.00014 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33456 S=33871 LEN=20
+45   5.00012 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33457 S=33871 LEN=20
+46   5.00015 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33458 S=33871 LEN=20
+47   5.00013 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33459 S=33871 LEN=20
+48   5.00012 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33460 S=33871 LEN=20
+49   5.00013 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33461 S=33871 LEN=20
+50   5.00013 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33462 S=33871 LEN=20
+51   5.00010 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33463 S=33871 LEN=20
+52   0.00886 52.93.114.22 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+53   0.00348 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33464 S=33871 LEN=20
+54   0.00200 54.239.111.243 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+55   0.01929 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33465 S=33871 LEN=20
+56   5.00013 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33466 S=33871 LEN=20
+57   0.00114 54.239.111.253 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+58   0.00368 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33467 S=33871 LEN=20
+59   0.00133 206.126.237.30 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+60   0.01308 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33468 S=33871 LEN=20
+61   0.03613 52.93.114.86 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+62   0.00448 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33469 S=33871 LEN=20
+63   0.00654 206.126.237.30 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+64   0.00011 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33470 S=33871 LEN=20
+65   0.00081 104.16.126.51 -> ip-172-31-87-192.ec2.internal ICMP Destination unreachable (UDP port 33470 unreachable)
+66   1.11675 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33471 S=33871 LEN=20
+67   0.00069 104.16.126.51 -> ip-172-31-87-192.ec2.internal ICMP Destination unreachable (UDP port 33471 unreachable)
+68   0.00004 ip-172-31-87-192.ec2.internal -> 104.16.126.51 UDP D=33472 S=33871 LEN=20
+69   0.00089 54.239.111.247 -> ip-172-31-87-192.ec2.internal ICMP Time exceeded (in transit)
+70  94.41655 ip-172-31-87-192.ec2.internal -> 196.52.43.131.netsystemsresearch.com ICMP Destination unreachable (UDP port 5632 unreachable)
+71 166.95985 herro.skid.com -> ip-172-31-87-192.ec2.internal ICMP Destination unreachable (Host administratively prohibited)
+72 446.40635 ip-172-31-87-192.ec2.internal -> 77.247.109.25 ICMP Destination unreachable (UDP port 5060 unreachable)

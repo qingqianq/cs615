@@ -1,0 +1,4 @@
+What I leared:
+     HTTPS handshake, DNS query process.
+Keep your tcpdump running for a while. Do you see other queries that you did not actively initiate?
+     I only saw a query I do not access one time, and I do not record it, but when I retry the command, the query disappear.

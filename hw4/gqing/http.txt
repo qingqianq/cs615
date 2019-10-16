@@ -1,0 +1,190 @@
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:/C=US/ST=California/L=Sunnyvale/O=Oath Inc/CN=*.www.yahoo.com
+   i:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert SHA2 High Assurance Server CA
+ 1 s:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert SHA2 High Assurance Server CA
+   i:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert High Assurance EV Root CA
+ 2 s:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert SHA2 High Assurance Server CA
+   i:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert High Assurance EV Root CA
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIII/jCCB+agAwIBAgIQD9wlUSAXQ8f1YUHsKT1mvTANBgkqhkiG9w0BAQsFADBw
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+d3cuZGlnaWNlcnQuY29tMS8wLQYDVQQDEyZEaWdpQ2VydCBTSEEyIEhpZ2ggQXNz
+dXJhbmNlIFNlcnZlciBDQTAeFw0xOTAyMDEwMDAwMDBaFw0xOTA3MzExMjAwMDBa
+MGMxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRIwEAYDVQQHEwlT
+dW5ueXZhbGUxETAPBgNVBAoTCE9hdGggSW5jMRgwFgYDVQQDDA8qLnd3dy55YWhv
+by5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCoF8Z3ZU63apy7
+b51WIUjJhaG/XMj7MN8cf2eQ9nSPEuAT2iD7KWTiq0OEPcCoJnJU0H/JR2BOHfch
+KuhyYcL86F8hrpO8gvpCaGu1+teBAvLS/m/f0QD3FW0GmUym17w86Y6FJ6zOF1zH
+99pgDavmT2bi/kHTKZwGC9PMhSsqgNwm7jsOt9KMqYjwvwttSayUwnn7Ve/IbzTv
+PIiu8MZz1G5n14UWHPqxn9rHbPoC+mv0U5IylwMsNJiaGCMJRVcdhGVGMg3y/7D+
+aVUfWU0z5BgBsv32rxJ3HnnJuPjEr8l28f3LRHc9GK2kuAiSrHOGFeG36bWWGqRA
+jjwHw/YhAgMBAAGjggWfMIIFmzAfBgNVHSMEGDAWgBRRaP+QrwIHdTzM2WVkYqIS
+uFlyOzAdBgNVHQ4EFgQUVvdF1ITRPJWtWBQu9NHMLxHAc/YwggLHBgNVHREEggK+
+MIICuoIPKi53d3cueWFob28uY29tghBhZGQubXkueWFob28uY29tgg4qLmFtcC55
+aW1nLmNvbYIMYXUueWFob28uY29tggxiZS55YWhvby5jb22CDGJyLnlhaG9vLmNv
+bYIPY2EubXkueWFob28uY29tghNjYS5yb2dlcnMueWFob28uY29tggxjYS55YWhv
+by5jb22CEGRkbC5mcC55YWhvby5jb22CDGRlLnlhaG9vLmNvbYIUZW4tbWFrdG9v
+Yi55YWhvby5jb22CEWVzcGFub2wueWFob28uY29tggxlcy55YWhvby5jb22CD2Zy
+LWJlLnlhaG9vLmNvbYIWZnItY2Eucm9nZXJzLnlhaG9vLmNvbYISZnJvbnRpZXIu
+eWFob28uY29tggxmci55YWhvby5jb22CDGdyLnlhaG9vLmNvbYIMaGsueWFob28u
+Y29tgg5oc3JkLnlhaG9vLmNvbYIXaWRlYW5ldHNldHRlci55YWhvby5jb22CDGlk
+LnlhaG9vLmNvbYIMaWUueWFob28uY29tggxpbi55YWhvby5jb22CDGl0LnlhaG9v
+LmNvbYIRbWFrdG9vYi55YWhvby5jb22CEm1hbGF5c2lhLnlhaG9vLmNvbYIMbWJw
+LnlpbWcuY29tggxteS55YWhvby5jb22CDG56LnlhaG9vLmNvbYIMcGgueWFob28u
+Y29tggxxYy55YWhvby5jb22CDHJvLnlhaG9vLmNvbYIMc2UueWFob28uY29tggxz
+Zy55YWhvby5jb22CDHR3LnlhaG9vLmNvbYIMdWsueWFob28uY29tggx1cy55YWhv
+by5jb22CEXZlcml6b24ueWFob28uY29tggx2bi55YWhvby5jb22CDXd3dy55YWhv
+by5jb22CCXlhaG9vLmNvbYIMemEueWFob28uY29tMA4GA1UdDwEB/wQEAwIFoDAd
+BgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwdQYDVR0fBG4wbDA0oDKgMIYu
+aHR0cDovL2NybDMuZGlnaWNlcnQuY29tL3NoYTItaGEtc2VydmVyLWc2LmNybDA0
+oDKgMIYuaHR0cDovL2NybDQuZGlnaWNlcnQuY29tL3NoYTItaGEtc2VydmVyLWc2
+LmNybDBMBgNVHSAERTBDMDcGCWCGSAGG/WwBATAqMCgGCCsGAQUFBwIBFhxodHRw
+czovL3d3dy5kaWdpY2VydC5jb20vQ1BTMAgGBmeBDAECAjCBgwYIKwYBBQUHAQEE
+dzB1MCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wTQYIKwYB
+BQUHMAKGQWh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydFNIQTJI
+aWdoQXNzdXJhbmNlU2VydmVyQ0EuY3J0MAwGA1UdEwEB/wQCMAAwggEEBgorBgEE
+AdZ5AgQCBIH1BIHyAPAAdgBj8tvN6DvMLM8LcoQnV2szpI1hd4+9daY4scdoVEvY
+jQAAAWipsvzMAAAEAwBHMEUCIQCyuKUwAfibeSYhivO12vUE3tN1Hx/y05ApHuIL
+grZdvAIgVSVWNr0pgn0AFMStQYis6iCxDVv7CUHFE9rLKZzvaFAAdgBvU3asMfAx
+GdiZAKRRFf93FRwR2QLBACkGjbIImjfZEwAAAWipsv4eAAAEAwBHMEUCIEFoyEHj
+uY+qG5fgbALBr7MbM8hMTUh6iN/kiaswWL2XAiEAioLaMTehRUedgeRd6h/WT7PK
+Aqql+98jubsAkNxrTbwwDQYJKoZIhvcNAQELBQADggEBAGrYmehOQ55AQlHvNRIe
+oGHhwFjH7c22EuH+Yca+EFXqlj8fcuHggR6cAFf4ez/yHKzH9Ag4uIDmikcpi8+p
+Q23T4RngW34fhNII2PO1mTVylS9KOyCPVdzah5Y9/Av5qFjPFh9sQeyubytgO3jb
+YAaAh87VrAaC7YYXYkxvU1Fk3ur7CV0sHKwcxP9JBElbvujED7GeewhcOgfRj6D0
+OzQ41ajCCfnwo5mjyj7GOTh6lgz2VNGUJ7EhXDBj67B43X7WhJucXTiOqoLj90Pz
+f51FmrXPM3iJWvfIfxBCL7ydeB8ZtfribE0/RMmuLl1Tuwwr1XYskzLxaGHJVpcU
+u5U=
+-----END CERTIFICATE-----
+subject=/C=US/ST=California/L=Sunnyvale/O=Oath Inc/CN=*.www.yahoo.com
+issuer=/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert SHA2 High Assurance Server CA
+---
+No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: ECDH, P-256, 256 bits
+---
+SSL handshake has read 5413 bytes and written 415 bytes
+---
+New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES128-GCM-SHA256
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES128-GCM-SHA256
+    Session-ID: 8BD068450E4D496F8FC9BAC9B8617287017006413DA9728A80C16254585BBF19
+    Session-ID-ctx: 
+    Master-Key: 99C61DAFF7B96A5EE671DE2436BEFBB3DA153C36BF8CF2EFF50A86FFC763A0B904D93DAFA307906D5B6909BB40E0F736
+    Key-Arg   : None
+    Krb5 Principal: None
+    PSK identity: None
+    PSK identity hint: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 9d 3e 1b 5e a3 53 79 14-ad 44 b2 53 db 8d c6 98   .>.^.Sy..D.S....
+    0010 - 20 e7 a2 51 25 a7 33 d5-64 8c ed a6 87 72 3e 6c    ..Q%.3.d....r>l
+    0020 - ac c0 60 cf 58 1d 93 1c-70 53 dd 13 cb 0b ea 08   ..`.X...pS......
+    0030 - 7f 03 fb 8f 39 d1 f3 03-db 1d ca 55 84 38 3a 39   ....9......U.8:9
+    0040 - ee be 8a df 28 f0 2a 16-04 48 9b c0 05 8b d2 9c   ....(.*..H......
+    0050 - bb 42 d7 c4 a6 fb fb f4-4c b6 81 6b e5 2b bf 28   .B......L..k.+.(
+    0060 - 42 c8 04 d9 be e9 f9 af-67 a3 6c 78 2f 24 0e b5   B.......g.lx/$..
+    0070 - db 99 c0 9f 87 79 93 3a-f1 2d 7d 75 d8 9a 4b cb   .....y.:.-}u..K.
+    0080 - ef 63 f2 c3 b7 22 bb 49-85 40 9c e1 d8 8a 01 c7   .c...".I.@......
+    0090 - 2e b1 e7 ac 50 82 68 f1-da 34 fe ed 04 c5 ea d8   ....P.h..4......
+    00a0 - c0 2b 3a 1e e3 fa d6 4b-50 5b 6e 33 8d aa 98 cb   .+:....KP[n3....
+    00b0 - 37 41 20 26 68 66 66 71-93 68 52 17 fd ca 82 17   7A &hffq.hR.....
+
+    Start Time: 1553473643
+    Timeout   : 300 (sec)
+    Verify return code: 0 (ok)
+---
+HTTP/1.1 200 OK
+         HTTP 1.1 status code 200, success.
+
+Content-Type: text/html; charset=UTF-8
+              Multipurpose Internet Mail Extensions:html, character encoding: utf-8
+
+Date: Mon, 25 Mar 2019 00:25:45 GMT
+              Time.
+
+x-amz-server-side-encryption: AES256
+              Amazon use AES256 to encription.
+
+Cache-Control: no-store, no-cache, max-age=0, private
+              no-store: not store the cache; no-cache: send the request to server, not use cache; max-age: cache invalid time, often used with Last-Modified;
+              private: only client can use cache, the proxy can not use.
+
+Content-Encoding: gzip
+              Tell the client how to decode to get the content, gzip. 
+
+Server: ATS
+
+X-Cache: Hit from cloudfront
+              Request served by content Delivery Network.
+
+Via: 1.1 3d3d633d266d05d90a4eea7a6a59b514.cloudfront.net (CloudFront),
+     https/1.1 media-ncache-fp29.prod.media.ne1.yahoo.com (ApacheTrafficServer [cMsSf ]),http/1.1 media-ncache-fp29.prod.media.ne1.yahoo.com (ApacheTrafficServer [cSsSfU]),
+     http/1.1 media-ncache-fp29.prod.media.ne1.yahoo.com (ApacheTrafficServer [cRs f ]), http/1.1 media-ncache-fp31.prod.media.ne1.yahoo.com (ApacheTrafficServer [cMsSf ]),
+     http/1.1 media-router-fp1015.prod.media.ne1.yahoo.com (ApacheTrafficServer [cMsSf ])
+              The Via general header is added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers.
+              It is used for tracking message forwards, avoiding request loops, and identifying the protocol capabilities of senders along the request/response chain.
+
+X-Amz-Cf-Id: tPadmJHUnz42Dfbx6O9YvKZvI82PfXXPVwYhb0Shu_gxP1FHz-mCbA==
+
+Age: 100
+      The time in seconds the object has been in a proxy cache.
+
+Content-Length: 230121
+      Content-length.
+
+P3P: policyref="http://info.yahoo.com/w3c/p3p.xml,CP="CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV
+     The Platform for Privacy Preferences Project (P3P) is an obsolete protocol allowing websites to declare their intended use of information they collect about web browser users.
+
+Expires: -1
+         The date invalid of the cache.
+
+Connection: keep-alive
+            The TCP connection will not be closed after transfer data.
+
+Strict-Transport-Security: max-age=31536000
+            It should only be accessed by HTTPS.max-age : The time, in seconds, that the browser should remember that a site is only to be accessed using HTTPS.
+
+Content-Security-Policy-Report-Only: style-src https://*.btrll.com https://*.oath.com https://*.yimg.com https://*.yahoo.com 'self' 'unsafe-inline' data: blob:;
+                                     script-src https://*.btrll.com https://*.oath.com https://*.yahoo.com https://*.yimg.com 'self' 'unsafe-inline' 'unsafe-eval'
+                                                https://platform.twitter.com https://*.btrll.com data: blob:;
+                                     frame-ancestors https://*.techcrunch.com https://*.huffingtonpost.com https://*.aol.com https://*.yahoo.com;
+                                     sandbox allow-forms allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox allow-presentation;
+                                     report-uri https://csp.yahoo.com/beacon/csp?src=ats&site=frontpage&region=US&lang=en-US&device=&yrid=0dp24gpe9g83c&partner=;
+            The HTTP Content-Security-Policy-Report-Only response header allows web developers to experiment with policies by monitoring (but not enforcing) their effects.
+            These violation reports consist of JSON documents sent via an HTTP POST request to the specified URI.
+
+Content-Security-Policy: sandbox allow-forms allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox allow-presentation;
+                         report-uri https://csp.yahoo.com/beacon/csp?src=ats&site=frontpage&region=US&lang=en-US&device=&yrid=0dp24gpe9g83c&partner=;
+                         CSP: The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page.
+                         With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks
+
+X-Frame-Options: SAMEORIGIN
+                 It is used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object> .
+                 Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.
+                       SAMEORGIN: The page can only be displayed in a frame on the same origin as the page itself. The spec leaves it up
+                       to browser vendors to decide whether this option applies to the top level, the parent, or the whole chain,
+                       although it is argued that the option is not very useful unless all ancestors are also in the same origin
+
+X-XSS-Protection: 1; report="https://csp.yahoo.com/beacon/csp?src=fp-hpkp-www"
+                  The HTTP X-XSS-Protection response header is a feature of Internet Explorer, Chrome and Safari
+                  that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks.
+                  Although these protections are largely unnecessary in modern browsers when sites implement a strong Content-Security-Policy
+                  that disables the use of inline JavaScript ('unsafe-inline'), they can still provide protections for users of older web browsers that don't yet support CSP.
+
+Expect-CT: max-age=31536000, report-uri="http://csp.yahoo.com/beacon/csp?src=yahoocom-expect-ct-report-only"
+           The Expect-CT header allows sites to opt in to reporting and/or enforcement of Certificate Transparency requirements,
+           which prevents the use of misissued certificates for that site from going unnoticed.
+           max-age: Specifies the number of seconds after reception of the Expect-CT header field during which the user agent should regard the host
+           from whom the message was received as a known Expect-CT host.
+           report-uri:Specifies the URI to which the user agent should report Expect-CT failures.

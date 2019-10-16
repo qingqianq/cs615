@@ -1,0 +1,34 @@
+Server:
+IP 172.31.87.171.45646 > ip-172-31-87-155.ec2.internal.domain: 24603+ [1au] A? www.facebook.com. (45)
+
+   send recursive query request to the server.
+
+IP ip-172-31-87-155.ec2.internal.33511 > 69.171.239.11.domain: 26220 [1au] A? star-mini.c10r.facebook.com. (56)
+
+   send query to 69.171.239.11.53, to ask who is star-mini.c10r.facebook.com.
+
+IP 69.171.239.11.domain > ip-172-31-87-155.ec2.internal.33511: 26220*- 1/2/5 A 31.13.65.36 (195)
+
+   get the result.
+
+IP ip-172-31-87-155.ec2.internal.domain > 172.31.87.171.45646: 24603 2/2/5 CNAME star-mini.c10r.facebook.com., A 31.13.65.36 (213)
+
+   send it back to the client.
+
+IP 172.31.87.171.47567 > ip-172-31-87-155.ec2.internal.domain: 6980+ [1au] PTR? 36.65.13.31.in-addr.arpa. (53)
+
+in--addr.arpa to reverse query to domain name.
+
+IP ip-172-31-87-155.ec2.internal.domain > 172.31.87.171.47567: 6980 1/2/5 PTR edge-star-mini-shv-01-atl3.facebook.com. (229)
+   send it back to the client.
+
+Client:
+IP ip-172-31-87-171.ec2.internal.45646 > 172.31.87.155.domain: 24603+ [1au] A? www.facebook.com. (45)
+IP 172.31.87.155.domain > ip-172-31-87-171.ec2.internal.45646: 24603 2/2/5 CNAME star-mini.c10r.facebook.com., A 31.13.65.36 (213)
+IP ip-172-31-87-171.ec2.internal.47567 > 172.31.87.155.domain: 6980+ [1au] PTR? 36.65.13.31.in-addr.arpa. (53)
+IP 172.31.87.155.domain > ip-172-31-87-171.ec2.internal.47567: 6980 1/2/5 PTR edge-star-mini-shv-01-atl3.facebook.com. (229)
+
+command: dig www.facebook.com
+         dig -x 31.13.65.36 +short 
+I think the reason why the PTR is not www.facebook.com because each ip address can have many domain name, if I ping the edge-star-mini-shv-01-atl3.facebook.com,
+I can also get the same address 31.13.65.36.

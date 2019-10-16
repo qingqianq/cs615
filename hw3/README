@@ -1,0 +1,79 @@
+When I use tcpdump to get the package, I get 13 packages by MAC, but 12 packages by Fedora.
+Command : tcpdump -w pcap src port 80 or dst port 80
+
+Feroda : 11	10.893284	172.31.17.149	72.30.35.9	TCP	66	48726 → 80 [FIN, ACK] Seq=20 Ack=326 Win=30336 Len=0 TSval=2486913790 TSecr=1147923120
+
+Mac :    11	6.231520	192.168.1.74	72.30.35.9	TCP	66	59922 → 80 [ACK] Seq=20 Ack=326 Win=131424 Len=0 TSval=561135699 TSecr=2251145095
+         12	6.231637	192.168.1.74	72.30.35.9	TCP	66	59922 → 80 [FIN, ACK] Seq=20 Ack=326 Win=131424 Len=0 TSval=561135699 TSecr=2251145095
+
+In the http.txt, I do not know why the client send a tcp package that contains the request "HEAD / HTTP/1.0" (Ack length add 17),
+but then it send another HTTP package "HEAD / HTTP/1.0", I don't know why it sends twice, and why the HTTP package makes Ack add 2.
+
+
+Traceroute-command sends a TTL=1 udp request to the host to get the first route, then it send a TTL=2 to get the second route address,
+until get the host, the it will return a unreachable ICMP package, However,we will find that traceroute can't reach the destination.
+When the TTL increases to a certain size, it will never get the returned packet. In fact, this time the packet has arrived at the target server,
+but most of the application servers do not provide UDP service (or blocked by the firewall) because of security problems,
+so we can not get any return from the server, the program will take it for granted. At the end, I always try to increase the TTL of the packet.
+
+I search a solution, send the ICMP echo request, when the server recerive request, it will send a echo reply.(The windows inplements tracert in this way).
+
+typedef struct ICMPPacket {
+    uint8_t     type;
+    uint8_t     code;
+    uint16_t    checksum; 
+    uint16_t    identifier;
+    uint16_t    sequenceNumber;
+    // data...
+} ICMPPacket;
+
+typedef enum ICMPv4Type {
+    kICMPv4TypeEchoReply = 0,
+    kICMPv4TypeEchoRequest = 8,
+    kICMPv4TypeTimeOut = 11,
+}ICMPv4Type;
+
+typedef struct IPv4Header {
+    uint8_t versionAndHeaderLength;
+    uint8_t serviceType;
+    uint16_t totalLength; 
+    uint16_t identifier;
+    uint16_t flagsAndFragmentOffset;
+    uint8_t timeToLive;
+    uint8_t protocol;
+    uint16_t checksum;
+    uint8_t sourceAddress[4];
+    uint8_t destAddress[4];
+    // options...
+    // data...
+} IPv4Header;
+
+ (ICMPPacket *)unpackICMPv4Packet((char *)packet, (int)len ){
+    if (len < (sizeof(IPv4Header) + sizeof(ICMPPacket))) {
+        return NULL;
+    }
+    
+    const struct IPv4Header *ipPtr = (const IPv4Header *)packet;
+    if ((ipPtr->versionAndHeaderLength & 0xF0) != 0x40 || // IPv4
+        ipPtr->protocol != 1) { // ICMP
+        return NULL;
+    }
+  
+    size_t ipHeaderLength = (ipPtr->versionAndHeaderLength & 0x0F) * sizeof(uint32_t); 
+    if (len < ipHeaderLength + sizeof(ICMPPacket)) {
+        return NULL;
+    }
+    return (ICMPPacket *)((char *)packet + ipHeaderLength);
+}
+
+int sock = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
+int ttl = 1;
+for (0...30) {
+    setsockopt(sock, IPPROTO_IP, IP_TTL, &ttl, sizeof(ttl));
+    ++ttl;
+    for (0...3) {
+        sendto(...);
+        recvfrom(...);
+        ICMPPacket *packet = unpack(...);
+    }
+}

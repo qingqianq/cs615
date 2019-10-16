@@ -1,0 +1,21 @@
+IP 172.31.87.171.36708 > 172.31.87.155.53: 15364+ A? www.yahoo.com. (31)
+IP 172.31.87.171.36708 > 172.31.87.155.53: 53005+ AAAA? www.yahoo.com. (31)
+    DNS query form client to server, "+" means recursive query, A? means query a IPv4 address, AAAA? means query a IPv6 address,
+    31 means 12 bytes DNS head and 15 bytes query and 4 bytes for kind of query.
+
+IP 172.31.87.155.55299 > 68.180.130.15.53: 7134 [1au] A? atsv2-fp-shed.wg1.b.yahoo.com. (58)
+IP 172.31.87.155.9751 > 68.180.130.15.53: 6228 [1au] AAAA? atsv2-fp-shed.wg1.b.yahoo.com. (58)
+   In the configure file, it defines the com. address, then the sever asked for 68.180.130.15.53(yf2.yahoo.com) to get the address.
+   
+IP 68.180.130.15.53 > 172.31.87.155.55299: 7134*- 4/0/1 A 98.138.219.231, A 72.30.35.9, A 98.138.219.232, A 72.30.35.10 (122)
+IP 68.180.130.15.53 > 172.31.87.155.9751: 6228*- 4/0/1 AAAA 2001:4998:58:1836::10, AAAA 2001:4998:44:41d::4, AAAA 2001:4998:58:1836::11, AAAA 2001:4998:44:41d::3 (170)
+   The 68.180.130.15.53(yf2.yahoo.com.domain) find the address send it back to the server
+
+IP 172.31.87.155.53 > 172.31.87.171.36708: 15364 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., A 98.138.219.232, A 72.30.35.10, A 98.138.219.231, A 72.30.35.9 (279)
+IP 172.31.87.155.53 > 172.31.87.171.36708: 53005 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., AAAA 2001:4998:44:41d::3, AAAA 2001:4998:58:1836::10, AAAA 2001:4998:58:1836::11, AAAA 2001:4998:44:41d::4 (327)
+   The server has the address of the www.yahoo.com, send it back to client.
+
+IP 172.31.87.171.56471 > 172.31.87.155.53: 61788+ A? www.yahoo.com. (31)
+IP 172.31.87.171.56471 > 172.31.87.155.53: 24933+ AAAA? www.yahoo.com. (31)
+IP 172.31.87.155.53 > 172.31.87.171.56471: 61788 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., A 98.138.219.232, A 72.30.35.9, A 98.138.219.231, A 72.30.35.10 (279)
+IP 172.31.87.155.53 > 172.31.87.171.56471: 24933 5/4/4 CNAME atsv2-fp-shed.wg1.b.yahoo.com., AAAA 2001:4998:58:1836::10, AAAA 2001:4998:44:41d::3, AAAA 2001:4998:44:41d::4, AAAA 2001:4998:58:1836::11 (327)

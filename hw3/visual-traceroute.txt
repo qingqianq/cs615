@@ -1,0 +1,127 @@
+traceroute www.uni-marburg.de
+The same result with the visual traceroute, 1-10 are in the US, 11-14 are in Germany
+
+ 1  [AS16889] 155.246.136.2 (155.246.136.2)  725.572 ms  119.574 ms  87.515 ms
+ 2  [AS16889] 155.246.151.89 (155.246.151.89)  52.143 ms  3.295 ms  39.558 ms
+ 3  [AS16889] gwa.cc.stevens.edu (155.246.151.37)  5.325 ms  6.052 ms  26.570 ms
+ 4  [AS6128] 454a0465.cst.lightpath.net (69.74.4.101)  38.477 ms  11.617 ms  6.869 ms
+ 5  [AS20001] 18267502.cst.lightpath.net (24.38.117.2)  5.420 ms  176.894 ms  122.923 ms
+ 6  [AS6128] 41332aa5.cst.lightpath.net (65.51.42.165)  113.696 ms  146.182 ms  906.706 ms
+ 7  [AS6128] hunt183-209.optonline.net (167.206.183.209)  389.099 ms  248.829 ms  178.269 ms
+ 8  [AS0] 451be09e.cst.lightpath.net (65.19.113.158)  93.545 ms  44.211 ms  315.325 ms
+ 9  * [AS3356] lag-102.ear1.newark1.level3.net (4.35.20.29)  480.823 ms  558.602 ms
+10  [AS3356] ae-1-5.bar1.hamburg1.level3.net (4.69.142.209)  408.817 ms  1635.347 ms  609.726 ms
+11  [AS9057] 195.122.181.62 (195.122.181.62)  293.759 ms  221.590 ms *
+12  [AS680] cr-han2-be3.x-win.dfn.de (188.1.144.38)  107.175 ms  116.832 ms  139.461 ms
+13  [AS680] kr-mar20-0.x-win.dfn.de (188.1.246.98)  576.754 ms  156.182 ms  117.635 ms
+14  [AS680] cerz01270.hrz.uni-marburg.de (137.248.2.1)  508.520 ms  129.896 ms *
+15  * * *
+16  * * *
+
+traceroute www.uba.ar
+The same with visual traceroute, 1-11 are in the US, 12 is in Paraguay
+
+ 1  [AS16889] 155.246.136.2 (155.246.136.2)  11.249 ms  35.581 ms  27.953 ms
+ 2  [AS16889] 155.246.151.89 (155.246.151.89)  8.210 ms  9.991 ms  32.835 ms
+ 3  [AS16889] gwa.cc.stevens.edu (155.246.151.37)  11.123 ms  5.902 ms  6.661 ms
+ 4  [AS6128] 454a0465.cst.lightpath.net (69.74.4.101)  4.880 ms  6.432 ms  4.882 ms
+ 5  [AS20001] 18267502.cst.lightpath.net (24.38.117.2)  4.799 ms  12.009 ms  6.652 ms
+ 6  [AS6128] 41332aa5.cst.lightpath.net (65.51.42.165)  17.695 ms  7.407 ms  27.863 ms
+ 7  [AS6128] hunt183-209.optonline.net (167.206.183.209)  13.876 ms  7.973 ms  10.050 ms
+ 8  [AS0] 451be09e.cst.lightpath.net (65.19.113.158)  9.348 ms  10.214 ms  30.819 ms
+ 9  [AS3356] lag-102.ear1.newark1.level3.net (4.35.20.29)  20.139 ms  52.903 ms  15.057 ms
+10  * * *
+11  [AS3356] amx-argenti.ear4.miami2.level3.net (4.15.159.234)  283.268 ms
+    [AS3356] amx-argenti.ear4.miami2.level3.net (4.15.158.154)  495.910 ms
+    [AS3356] amx-argenti.ear4.miami2.level3.net (4.15.159.234)  195.809 ms
+12  * * [AS19037] be4-1-cf223-igw-01-bsas.claro.com.ar (131.100.186.97)  1632.085 ms
+13  * * *
+14  * * *
+
+
+traceroute www.hawaii.edu
+The same result.
+ 1  [AS16889] 155.246.136.2 (155.246.136.2)  167.308 ms  124.889 ms  27.798 ms
+ 2  [AS16889] 155.246.151.89 (155.246.151.89)  78.100 ms  11.529 ms  10.102 ms
+ 3  [AS16889] gwa.cc.stevens.edu (155.246.151.37)  135.401 ms  168.443 ms  137.857 ms
+ 4  [AS6128] 454a0465.cst.lightpath.net (69.74.4.101)  18.044 ms  6.113 ms  232.229 ms
+ 5  [AS20001] 18267502.cst.lightpath.net (24.38.117.2)  11.389 ms  5.231 ms  6.698 ms
+ 6  [AS6128] 41332aa5.cst.lightpath.net (65.51.42.165)  103.649 ms  10.874 ms  66.968 ms
+ 7  [AS6128] hunt183-209.optonline.net (167.206.183.209)  9.774 ms  7.452 ms  8.213 ms
+ 8  [AS0] 451be09e.cst.lightpath.net (65.19.113.158)  65.304 ms  13.994 ms  20.618 ms
+ 9  [AS3356] lag-102.ear1.newark1.level3.net (4.35.20.29)  13.598 ms  11.937 ms  189.770 ms
+10  * * *
+11  [AS3356] cenic.ear1.losangeles1.level3.net (4.35.156.66)  76.454 ms  101.274 ms  80.879 ms
+12  * * *
+13  * * *
+
+traceroute www.hku.hk
+The same results, 1-19 are in the US 20 -24 are in China.
+ 1  * [AS16889] 155.246.136.2 (155.246.136.2)  296.529 ms  1592.263 ms
+ 2  [AS16889] 155.246.151.89 (155.246.151.89)  500.011 ms  100.046 ms  79.767 ms
+ 3  [AS16889] gwa.cc.stevens.edu (155.246.151.37)  118.816 ms  200.585 ms  350.007 ms
+ 4  [AS6128] 454a0465.cst.lightpath.net (69.74.4.101)  23.132 ms  50.936 ms  75.820 ms
+ 5  [AS20001] 18267506.cst.lightpath.net (24.38.117.6)  17.661 ms  17.337 ms  22.751 ms
+ 6  [AS6128] hunt183-150.optonline.net (167.206.183.150)  363.721 ms  265.039 ms  931.346 ms
+ 7  [AS0] 451be0bd.cst.lightpath.net (65.19.113.189)  127.433 ms  253.541 ms  82.448 ms
+ 8  * * *
+ 9  [AS174] be3362.ccr41.jfk02.atlas.cogentco.com (154.54.3.9)  39.245 ms
+    [AS174] be3363.ccr42.jfk02.atlas.cogentco.com (154.54.3.125)  45.287 ms
+    [AS174] be3362.ccr41.jfk02.atlas.cogentco.com (154.54.3.9)  77.160 ms
+10  [AS174] be2890.ccr22.cle04.atlas.cogentco.com (154.54.82.245)  21.439 ms
+    [AS174] be2889.ccr21.cle04.atlas.cogentco.com (154.54.47.49)  21.535 ms
+    [AS174] be2890.ccr22.cle04.atlas.cogentco.com (154.54.82.245)  20.494 ms
+11  [AS174] be2717.ccr41.ord01.atlas.cogentco.com (154.54.6.221)  25.172 ms
+    [AS174] be2718.ccr42.ord01.atlas.cogentco.com (154.54.7.129)  21.686 ms
+    [AS174] be2717.ccr41.ord01.atlas.cogentco.com (154.54.6.221)  31.217 ms
+12  [AS174] be2831.ccr21.mci01.atlas.cogentco.com (154.54.42.165)  56.885 ms  46.485 ms
+    [AS174] be2832.ccr22.mci01.atlas.cogentco.com (154.54.44.169)  44.696 ms
+13  [AS174] be3036.ccr22.den01.atlas.cogentco.com (154.54.31.89)  50.094 ms
+    [AS174] be3035.ccr21.den01.atlas.cogentco.com (154.54.5.89)  60.408 ms
+    [AS174] be3036.ccr22.den01.atlas.cogentco.com (154.54.31.89)  52.089 ms
+14  [AS174] be3037.ccr21.slc01.atlas.cogentco.com (154.54.41.145)  89.638 ms
+    [AS174] be3038.ccr32.slc01.atlas.cogentco.com (154.54.42.97)  56.173 ms
+    [AS174] be3037.ccr21.slc01.atlas.cogentco.com (154.54.41.145)  60.134 ms
+15  [AS174] be2085.ccr21.sea02.atlas.cogentco.com (154.54.2.197)  72.880 ms
+    [AS174] be2029.ccr22.sea02.atlas.cogentco.com (154.54.86.110)  71.899 ms
+    [AS174] 154.54.89.101 (154.54.89.101)  74.084 ms
+16  [AS174] be2671.ccr21.pdx01.atlas.cogentco.com (154.54.31.78)  156.417 ms
+    [AS174] be2670.ccr21.pdx01.atlas.cogentco.com (154.54.42.150)  130.999 ms  152.375 ms
+17  [AS174] be3701.ccr21.hkg02.atlas.cogentco.com (154.54.87.122)  319.342 ms  288.840 ms  280.584 ms
+18  [AS174] be3453.rcr51.hkg01.atlas.cogentco.com (154.54.0.17)  311.489 ms  317.196 ms  212.206 ms
+19  [AS0] hkbn.demarc.cogentco.com (154.18.4.82)  216.199 ms  213.878 ms  275.389 ms
+20  [AS9269] 061244225066.ctinets.com (61.244.225.66)  321.742 ms  257.564 ms  296.738 ms
+21  * * *
+22  [AS9269] 183178024002.ctinets.com (183.178.24.2)  226.204 ms  230.367 ms  277.333 ms
+23  [AS10103] 203.188.117.2 (203.188.117.2)  251.843 ms  259.116 ms  302.171 ms
+24  [AS45474] 147.8.239.15 (147.8.239.15)  292.005 ms  407.750 ms  229.449 ms
+25  * * *
+26  * * *
+27  * * *
+traceroute www.du.ac.in
+The same , 1-8 are in the US, 9 and 12 are in the UK, 17 is in India, but 10 and 11 are unknown.
+
+ 1  [AS16889] 155.246.136.2 (155.246.136.2)  6.494 ms  4.330 ms  8.744 ms
+ 2  [AS16889] 155.246.151.89 (155.246.151.89)  3.814 ms  4.677 ms  4.336 ms
+ 3  [AS16889] gwa.cc.stevens.edu (155.246.151.37)  3.420 ms  24.278 ms  5.440 ms
+ 4  [AS6128] 454a0465.cst.lightpath.net (69.74.4.101)  5.459 ms  5.124 ms  7.569 ms
+ 5  [AS20001] 18267502.cst.lightpath.net (24.38.117.2)  4.177 ms  5.065 ms  4.666 ms
+ 6  [AS6128] 69.74.203.201 (69.74.203.201)  18.658 ms  10.144 ms  10.317 ms
+ 7  [AS0] 451be0b5.cst.lightpath.net (65.19.113.181)  22.868 ms  9.022 ms  9.192 ms
+ 8  [AS4637] nyiix.nyk.cw.net (198.32.160.112)  20.961 ms  46.676 ms  16.974 ms
+ 9  [AS1273] ae0-xcr1.nyh.cw.net (195.2.25.70)  113.807 ms  128.630 ms
+    [AS1273] ae12-xcr1.ptl.cw.net (195.2.27.250)  124.090 ms
+10  [AS1273] et-10-1-5-xcr1.ptl.cw.net (195.2.24.242)  103.437 ms  119.487 ms
+    [AS1273] ae0-pcr1.ptl.cw.net (195.2.9.65)  77.210 ms
+11  [AS1273] ae0-pcr1.ptl.cw.net (195.2.9.65)  76.674 ms
+    [AS1273] ae26-xcr1.mar.cw.net (195.2.3.53)  87.324 ms  86.236 ms
+12  [AS1273] ae18-xcr1.mar.cw.net (195.2.25.65)  120.510 ms
+    [AS1273] vf-ind-gw1.mar.cw.net (195.89.115.198)  185.548 ms
+    [AS1273] ae18-xcr1.mar.cw.net (195.2.25.65)  160.770 ms
+13  [AS1273] vf-ind-gw1.mar.cw.net (195.89.115.198)  332.663 ms  196.495 ms *
+14  * * *
+15  [AS55410] 118.185.99.33 (118.185.99.33)  451.784 ms * *
+16  * * *
+17  [AS9885] cache.google.com (180.149.52.1)  289.790 ms *  342.448 ms
+18  * * *
+19  * * *

@@ -1,0 +1,141 @@
+0x00 45 ipv4 version and header length, 4006 40 -> time to live, 06 -> TCP, ac1f 1195 -> my aws ip address
+0x10 481e 2309 -> destination www.yahoo.com, be56 -> Source port, 0050 -> destination port 80, 00a0 928d -> seq
+0x20 a0c2 -> flags:
+     000. .... .... = Reserved : not set
+     ...0 .... .... = Nonce : not set
+     .... 1... .... = Congestion Widow Reduced : set
+     .... .1.. .... = ECN-Echo : set
+     .... ..0. .... = Urgent : not set
+     .... ...0 .... = Acknowledgement : not set
+     .... .... 0... = Push : not set
+     .... .... .0.. = Reset : not set
+     .... .... ..1. = SYN : set
+     .... .... ...0 = Fin : not set
+Package: 1	0.000000	172.31.17.149	72.30.35.9	TCP	74	48726 → 80 [SYN, ECN, CWR] Seq=10523277 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=2486902897 TSecr=0 WS=128
+My aws send a SYN try to connect with yahoo, SYN = 1, seq -> 00a0 928d = 10523277 (relative number to 0):
+IP 172.31.17.149.48726 > 72.30.35.9.80: Flags [SEW], seq 10523277, win 29200, options [mss 1460,sackOK,TS val 2486902897 ecr 0,nop,wscale 7], length 0
+	0x0000:  4510 003c ba2e 4000 4006 57a2 ac1f 1195  E..<..@.@.W..... 
+	0x0010:  481e 2309 be56 0050 00a0 928d 0000 0000  H.#..V.P........
+	0x0020:  a0c2 7210 290a 0000 0204 05b4 0402 080a  ..r.)...........
+	0x0030:  943b 2071 0000 0000 0103 0307            .;.q........
+
+
+0x0020 a012 -> ACK = 1, SYN = 1
+Package: 2	0.026405	72.30.35.9	172.31.17.149	TCP	74	80 → 48726 [SYN, ACK] Seq=2994453556 Ack=10523278 Win=14480 Len=0 MSS=1460 SACK_PERM=1 TSval=1147912253 TSecr=2486902897 WS=256
+Yahoo receive my SYN and send its Seq and Ack(its value is the received Seq add 1) to tell my aws:
+IP 72.30.35.9.80 > 172.31.17.149.48726: Flags [S.], seq 2994453556, ack 10523278, win 14480, options [mss 1460,sackOK,TS val 1147912253 ecr 2486902897,nop,wscale 8], length 0
+	0x0000:  4500 003c 0000 4000 2406 2de1 481e 2309  E..<..@.$.-.H.#.
+	0x0010:  ac1f 1195 0050 be56 b27b bc34 00a0 928e  .....P.V.{.4....
+	0x0020:  a012 3890 6ca8 0000 0204 05b4 0402 080a  ..8.l...........
+	0x0030:  446b c03d 943b 2071 0103 0308            Dk.=.;.q....
+
+
+0x0020 8010 -> Ack = 1;
+Package: 3	0.026430	172.31.17.149	72.30.35.9	TCP	66	48726 → 80 [ACK] Seq=10523278 Ack=2994453556 Win=29312 Len=0 TSval=2486902923 TSecr=1147912253
+Ack = 1, receive the package from yahoo, complete the 3 times handshake, begin to transfer data.
+IP 172.31.17.149.48726 > 72.30.35.9.80: Flags [.], ack 1, win 229, options [nop,nop,TS val 2486902923 ecr 1147912253], length 0
+	0x0000:  4510 0034 ba2f 4000 4006 57a9 ac1f 1195  E..4./@.@.W.....
+	0x0010:  481e 2309 be56 0050 00a0 928e b27b bc35  H.#..V.P.....{.5
+	0x0020:  8010 00e5 2902 0000 0101 080a 943b 208b  ....)........;..
+	0x0030:  446b c03d                                Dk.=
+
+
+
+Package: 4	10.313616	172.31.17.149	72.30.35.9	TCP	83	48726 → 80 [PSH, ACK] Seq=10523278 Ack=2994453557 Win=29312 Len=17 TSval=2486913211 TSecr=1147912253 [TCP segment of a reassembled PDU]
+This is the first data transfer, HTTP request.
+IP 172.31.17.149.48726 > 72.30.35.9.80: Flags [P.], seq 1:18, ack 1, win 229, options [nop,nop,TS val 2486913211 ecr 1147912253], length 17: HTTP: HEAD / HTTP/1.0
+	0x0000:  4510 0045 ba30 4000 4006 5797 ac1f 1195  E..E.0@.@.W.....
+	0x0010:  481e 2309 be56 0050 00a0 928e b27b bc35  H.#..V.P.....{.5
+	0x0020:  8018 00e5 2913 0000 0101 080a 943b 48bb  ....)........;H.
+	0x0030:  446b c03d 4845 4144 202f 2048 5454 502f  Dk.=HEAD./.HTTP/
+	0x0040:  312e 300d 0a                             1.0..
+
+
+Package: 5	10.339937	72.30.35.9	172.31.17.149	TCP	66	80 → 48726 [ACK] Seq=2994453557 Ack=(18 = 1 + 17)10523295 Win=14592 Len=0 TSval=1147922567 TSecr=2486913211
+The server yahoo receive my request, send a package Ack += 17, because my request "HEAD / HTTP/1.0\r\n" length = 17, make sure receive correct request.
+IP 72.30.35.9.80 > 172.31.17.149.48726: Flags [.], ack 18, win 57, options [nop,nop,TS val 1147922567 ecr 2486913211], length 0
+	0x0000:  4500 0034 54b2 4000 2406 d936 481e 2309  E..4T.@.$..6H.#.
+	0x0010:  ac1f 1195 0050 be56 b27b bc35 00a0 929f  .....P.V.{.5....
+	0x0020:  8010 0039 8327 0000 0101 080a 446b e887  ...9.'......Dk..
+	0x0030:  943b 48bb                                .;H.
+
+Package: 6	10.865217	172.31.17.149	72.30.35.9	HTTP	68	HEAD / HTTP/1.0
+IP 172.31.17.149.48726 > 72.30.35.9.80: Flags [P.], seq 18:20, ack 1, win 229, options [nop,nop,TS val 2486913762 ecr 1147922567], length 2: HTTP
+	0x0000:  4510 0036 ba31 4000 4006 57a5 ac1f 1195  E..6.1@.@.W.....
+	0x0010:  481e 2309 be56 0050 00a0 929f b27b bc35  H.#..V.P.....{.5
+	0x0020:  8018 00e5 2904 0000 0101 080a 943b 4ae2  ....)........;J.
+	0x0030:  446b e887 0d0a                           Dk....
+
+Package: 7	10.891523	72.30.35.9	172.31.17.149	TCP	66	80 → 48726 [ACK] Seq=2994453557 Ack=(20)10523297 Win=14592 Len=0 TSval=1147923118 TSecr=2486913762
+Ack += 2, make sure the correct data length.
+IP 72.30.35.9.80 > 172.31.17.149.48726: Flags [.], ack 20, win 57, options [nop,nop,TS val 1147923118 ecr 2486913762], length 0
+	0x0000:  4500 0034 54b3 4000 2406 d935 481e 2309  E..4T.@.$..5H.#.
+	0x0010:  ac1f 1195 0050 be56 b27b bc35 00a0 92a1  .....P.V.{.5....
+	0x0020:  8010 0039 7ed7 0000 0101 080a 446b eaae  ...9~.......Dk..
+	0x0030:  943b 4ae2                                .;J.
+
+Package: 8	10.892887	72.30.35.9	172.31.17.149	HTTP	390	HTTP/1.0 200 OK
+HTTP response.
+IP 72.30.35.9.80 > 172.31.17.149.48726: Flags [P.], seq 1:325, ack 20, win 57, options [nop,nop,TS val 1147923120 ecr 2486913762], length 324: HTTP: HTTP/1.0 200 OK
+	0x0000:  4500 0178 54b4 4000 2406 d7f0 481e 2309  E..xT.@.$...H.#.
+	0x0010:  ac1f 1195 0050 be56 b27b bc35 00a0 92a1  .....P.V.{.5....
+	0x0020:  8018 0039 5a83 0000 0101 080a 446b eab0  ...9Z.......Dk..
+	0x0030:  943b 4ae2 4854 5450 2f31 2e30 2032 3030  .;J.HTTP/1.0.200
+	0x0040:  204f 4b0d 0a44 6174 653a 204d 6f6e 2c20  .OK..Date:.Mon,.
+	0x0050:  3131 204d 6172 2032 3031 3920 3034 3a31  11.Mar.2019.04:1
+	0x0060:  343a 3539 2047 4d54 0d0a 5669 613a 2068  4:59.GMT..Via:.h
+	0x0070:  7474 702f 312e 3120 6d65 6469 612d 726f  ttp/1.1.media-ro
+	0x0080:  7574 6572 2d66 7031 3030 382e 7072 6f64  uter-fp1008.prod
+	0x0090:  2e6d 6564 6961 2e62 6631 2e79 6168 6f6f  .media.bf1.yahoo
+	0x00a0:  2e63 6f6d 2028 4170 6163 6865 5472 6166  .com.(ApacheTraf
+	0x00b0:  6669 6353 6572 7665 7220 5b63 2073 2066  ficServer.[c.s.f
+	0x00c0:  205d 290d 0a53 6572 7665 723a 2041 5453  .])..Server:.ATS
+	0x00d0:  0d0a 4361 6368 652d 436f 6e74 726f 6c3a  ..Cache-Control:
+	0x00e0:  206e 6f2d 7374 6f72 652c 206e 6f2d 6361  .no-store,.no-ca
+	0x00f0:  6368 652c 206d 6178 2d61 6765 3d30 2c20  che,.max-age=0,.
+	0x0100:  7072 6976 6174 650d 0a43 6f6e 7465 6e74  private..Content
+	0x0110:  2d54 7970 653a 2074 6578 742f 6874 6d6c  -Type:.text/html
+	0x0120:  0d0a 436f 6e74 656e 742d 4c61 6e67 7561  ..Content-Langua
+	0x0130:  6765 3a20 656e 0d0a 4578 7069 7265 733a  ge:.en..Expires:
+	0x0140:  202d 310d 0a58 2d46 7261 6d65 2d4f 7074  .-1..X-Frame-Opt
+	0x0150:  696f 6e73 3a20 5341 4d45 4f52 4947 494e  ions:.SAMEORIGIN
+	0x0160:  0d0a 436f 6e74 656e 742d 4c65 6e67 7468  ..Content-Length
+	0x0170:  3a20 3132 0d0a 0d0a                      :.12....
+
+Package: 9	10.892902	172.31.17.149	72.30.35.9	TCP	66	48726 → 80 [ACK] Seq=(20)10523297 Ack=(325)2994453881 Win=30336 Len=0 TSval=2486913790 TSecr=1147923120
+Ack += 324, Check the response send finish correctly.
+IP 172.31.17.149.48726 > 72.30.35.9.80: Flags [.], ack 325, win 237, options [nop,nop,TS val 2486913790 ecr 1147923120], length 0
+	0x0000:  4510 0034 ba32 4000 4006 57a6 ac1f 1195  E..4.2@.@.W.....
+	0x0010:  481e 2309 be56 0050 00a0 92a1 b27b bd79  H.#..V.P.....{.y
+	0x0020:  8010 00ed 2902 0000 0101 080a 943b 4afe  ....)........;J.
+	0x0030:  446b eab0                                Dk..
+
+
+0x0020 8011 -> flag Ack = 1, Fin = 1 (Try to close)
+Package: 10	10.893011	72.30.35.9	172.31.17.149	TCP	66	80 → 48726 [FIN, ACK] Seq=(325)2994453881 Ack=(20)10523297 Win=14592 Len=0 TSval=1147923120 TSecr=2486913762
+Get the correct result,and no data to transfer try to finish the connection.
+IP 72.30.35.9.80 > 172.31.17.149.48726: Flags [F.], seq 325, ack 20, win 57, options [nop,nop,TS val 1147923120 ecr 2486913762], length 0
+	0x0000:  4500 0034 54b5 4000 2406 d933 481e 2309  E..4T.@.$..3H.#.
+	0x0010:  ac1f 1195 0050 be56 b27b bd79 00a0 92a1  .....P.V.{.y....
+	0x0020:  8011 0039 7d90 0000 0101 080a 446b eab0  ...9}.......Dk..
+	0x0030:  943b 4ae2                                .;J.
+
+Package: 11	10.893284	172.31.17.149	72.30.35.9	TCP	66	48726 → 80 [FIN, ACK] Seq=(20)10523297 Ack=(326)2994453882 Win=30336 Len=0 TSval=2486913790 TSecr=1147923120
+Ack += 1, and set Fin to 1.
+When I use MAC to test, I get 2 packages here, one is a Ack package, the other is a Fin and Ack package, but Fedora only sends 1 package with Ack+=1 and set Fin = 1.
+
+IP 172.31.17.149.48726 > 72.30.35.9.80: Flags [F.], seq 20, ack 326, win 237, options [nop,nop,TS val 2486913790 ecr 1147923120], length 0
+	0x0000:  4510 0034 ba33 4000 4006 57a5 ac1f 1195  E..4.3@.@.W.....
+	0x0010:  481e 2309 be56 0050 00a0 92a1 b27b bd7a  H.#..V.P.....{.z
+	0x0020:  8011 00ed 2902 0000 0101 080a 943b 4afe  ....)........;J.
+	0x0030:  446b eab0                                Dk..
+
+Package: 12	10.919545	72.30.35.9	172.31.17.149	TCP	66	80 → 48726 [ACK] Seq=(326)2994453882 Ack=(21)10523298 Win=14592 Len=0 TSval=1147923146 TSecr=2486913790
+Ack += 1, close connection.
+IP 72.30.35.9.80 > 172.31.17.149.48726: Flags [.], ack 21, win 57, options [nop,nop,TS val 1147923146 ecr 2486913790], length 0
+	0x0000:  4500 0034 54b6 4000 2406 d932 481e 2309  E..4T.@.$..2H.#.
+	0x0010:  ac1f 1195 0050 be56 b27b bd7a 00a0 92a2  .....P.V.{.z....
+	0x0020:  8010 0039 7d59 0000 0101 080a 446b eaca  ...9}Y......Dk..
+	0x0030:  943b 4afe                                .;J.
+
+
